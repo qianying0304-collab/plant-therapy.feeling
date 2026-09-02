@@ -91,8 +91,45 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
 .card-note{text-align:center;margin:35px 0 -10px;font-size:13px;color:#7d857b;letter-spacing:1px}
 @media(max-width:900px){.survey-section{grid-template-columns:1fr;gap:30px}.pie-layout{justify-content:flex-start}.flip-card{height:500px}}
 @media(max-width:560px){.survey-section{padding:28px 20px}.pie-layout{flex-direction:column;align-items:center;gap:25px}.pie-legend{width:100%}.pie-chart{width:210px;height:210px}.pie-chart:after{inset:52px}.flip-card{height:525px}}
-@media (max-width: 560px) {
+/* ===== 行動裝置 Hero 區塊與標題置中修正 ===== */
+@media (max-width: 900px) {
+  /* 1. 將 Hero 區塊整體文字設定為置中 */
+  .hero-text {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 讓容器內的所有元件（包含按鈕與標題）水平置中 */
+  }
+
+  /* 2. 標題居中與寬度彈性化 */
   .hero-title {
-    font-size: clamp(26px, 7vw, 42px); /* 小螢幕自動縮小字體，確保不會溢出 */
+    text-align: center;
+    width: 100%;
+    margin: 15px auto 20px;
+    font-size: clamp(24px, 6.5vw, 42px); /* 手機端自動等比縮放字體 */
+  }
+
+  /* 第一行：讓植物（置中） */
+  .hero-title .line-1 {
+    text-align-last: center; /* 行動端改為居中對齊，避免極窄螢幕字距過寬 */
+    letter-spacing: 4px;
+  }
+
+  /* 第二行：成為生活中的陪伴（允許彈性換行，防止溢出） */
+  .hero-title .line-2 {
+    white-space: normal; /* 解除強制單行，允許在極窄螢幕彈性折行 */
+    word-break: break-word;
+    letter-spacing: 2px;
+  }
+
+  /* 前導小字與內文置中 */
+  .eyebrow {
+    text-align: center;
+  }
+
+  .lead {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 }
