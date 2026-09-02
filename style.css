@@ -1,0 +1,98 @@
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#f4f1e9;color:#344238;line-height:1.8}
+.navbar{position:fixed;z-index:10;top:0;left:0;width:100%;height:78px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:rgba(244,241,233,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(52,66,56,.08)}
+.logo{font-weight:700;letter-spacing:4px;font-size:20px}
+.navbar nav{display:flex;gap:27px}
+.navbar a{color:#344238;text-decoration:none;font-size:14px;transition:.25s}
+.navbar a:hover{color:#9a7757}
+.hero{min-height:100vh;padding:150px 9% 90px;display:grid;grid-template-columns:1fr 1fr;align-items:center;overflow:hidden;background:radial-gradient(circle at 85% 25%,#dfe7d7 0 12%,transparent 34%),#f4f1e9}
+.eyebrow,.section-label{font-size:12px;letter-spacing:4px;color:#8b765e}
+.hero h1{font-size:clamp(48px,6vw,82px);line-height:1.22;letter-spacing:5px;margin:18px 0 25px}
+.hero h1 em{font-style:normal;color:#657762}
+
+/* 首頁標題設定（純靠左對齊、自然字距） */
+.hero-title {
+  display: block;
+  font-size: clamp(28px, 5.2vw, 82px);
+  line-height: 1.3;
+  margin: 18px 0 25px;
+  text-align: left; /* 兩行文字一律靠左 */
+}
+
+.hero-title .line-1 {
+  display: block;
+  letter-spacing: 5px; /* 第一行「讓植物」的字距 */
+}
+
+.hero-title .line-2 {
+  display: block;
+  font-style: normal;
+  color: #657762;
+  letter-spacing: 2px; /* 第二行「成為生活中的陪伴」的字距 */
+  white-space: nowrap;  /* 關鍵：強制第二行「成為生活中的陪伴」絕對不自動換行 */
+}
+
+.lead{font-size:18px;max-width:500px;margin-bottom:35px}
+.btn{display:inline-block;padding:12px 26px;border-radius:999px;background:#4e6250;color:#fff;text-decoration:none;transition:.25s}
+.btn:hover{transform:translateY(-3px);background:#394a3c}
+.hero-art{height:560px;position:relative;display:flex;align-items:center;justify-content:center}
+.hero-art:before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:#d7dfcf}
+.pot-art{position:relative;font-size:190px;filter:drop-shadow(15px 25px 18px rgba(45,60,45,.13));z-index:2}
+.leaf{position:absolute;font-size:95px;z-index:3}
+.leaf-a{top:100px;left:18%}.leaf-b{right:12%;bottom:105px}
+.circle-note{position:absolute;right:2%;top:12%;font-size:10px;letter-spacing:3px;text-align:center;color:#71816d;line-height:1.5}
+.section{padding:120px 9%}
+.concept{background:#fff}
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:35px}
+h2{font-size:48px;line-height:1.35;letter-spacing:2px}
+.copy{font-size:17px}.copy p{margin-bottom:22px}
+.values{display:grid;grid-template-columns:repeat(3,1fr);background:#e5eadf}
+.value{padding:65px 9%;border-right:1px solid rgba(52,66,56,.12)}.value:last-child{border:0}
+.value span{font-size:12px;color:#8b765e;letter-spacing:2px}.value h3{font-size:32px;margin:10px 0}.value p{max-width:350px}
+.plants{background:#f4f1e9}.title-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:25px;align-items:end}.title-row>p{max-width:480px}
+.plant-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:55px}
+.plant-card{background:#fff;border-radius:20px;overflow:hidden;transition:.3s}.plant-card:hover{transform:translateY(-8px);box-shadow:0 18px 45px rgba(50,65,50,.1)}
+.plant-visual{height: 200px;display:flex;align-items:center;justify-content:center;font-size:100px}
+.rosemary{background:#dce5d7}.peace{background:#ece8df}.pachira{background:#d5ded1}
+.card-body{padding:28px}.card-body small{color:#8b765e;letter-spacing:2px}.card-body h3{font-size:30px;margin:4px 0 10px}.card-body p{font-size:15px}
+.product{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;background:#fff}
+.product-art{display:flex;justify-content:center}.ceramic-pot{width:410px;height:410px;border-radius:50%;background:#cbb193;display:flex;align-items:center;justify-content:center;font-size:130px;box-shadow:inset -25px -25px 45px rgba(80,55,35,.13),0 25px 55px rgba(60,50,40,.1)}
+.product-copy h2{margin:15px 0 25px}.product-copy>p{margin-bottom:18px;font-size:16px}
+.feature-list{display:grid;gap:16px;margin-top:35px}.feature-list>div{display:flex;gap:20px;align-items:center;padding-top:14px;border-top:1px solid #ddd7cb}.feature-list b{color:#8b765e}.feature-list small{color:#7b8378}
+.experience{background:#344238;color:#fff}.experience h2{margin-top:15px}.experience .section-label{color:#aab8a3}.sense-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:55px;margin-top:70px}.sense-grid div{border-top:1px solid #879486;padding-top:22px}.sense-grid span{color:#aab8a3}.sense-grid h3{font-size:30px;margin:10px 0}
+.story{text-align:center;background:#e5eadf}.story-inner{max-width:760px;margin:auto}.story h2{margin:15px 0 25px}.story p{font-size:17px;max-width:650px;margin:0 auto 30px}.btn.light{background:#344238}
+footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px}footer strong{font-size:21px;letter-spacing:3px}footer span,footer small{color:#b9c1b8;font-size:12px;letter-spacing:2px}
+@media(max-width:900px){.navbar{height:auto;padding:18px 5%;flex-direction:column;gap:12px}.navbar nav{flex-wrap:wrap;justify-content:center;gap:12px}.hero{grid-template-columns:1fr;text-align:center;padding-top:190px}.hero-art{height:430px}.hero-art:before{width:320px;height:320px}.pot-art{font-size:145px}.lead{margin-left:auto;margin-right:auto}.concept-grid,.product,.title-row{grid-template-columns:1fr;gap:45px}.values,.plant-grid,.sense-grid{grid-template-columns:1fr}.value{border-right:0;border-bottom:1px solid rgba(52,66,56,.12)}footer{flex-direction:column;text-align:center}h2{font-size:38px}}
+@media(max-width:560px){.section{padding:85px 7%}.hero{padding-left:7%;padding-right:7%}.hero h1{font-size:46px}.hero-art{height:350px}.hero-art:before{width:260px;height:260px}.pot-art{font-size:115px}.leaf{font-size:65px}.ceramic-pot{width:280px;height:280px;font-size:90px}}
+
+.character{display:block;margin-top:16px;color:#657762;font-size:14px;line-height:1.7}
+.meaning-note{margin-top:55px;padding:30px;text-align:center;background:#e5eadf;border-radius:18px}
+.meaning-note h3{font-size:25px;margin-bottom:8px}
+.meaning-note p{letter-spacing:2px;color:#5f705d}
+.meaning-note span{display:block;margin-top:10px;font-size:12px;color:#7d857b}
+.snake{background:#e0e5d9}.money{background:#e8e5cf}.basil{background:#dce5d7}
+
+/* ===== 翻面角色卡與民調圓餅圖 ===== */
+.survey-section{margin:65px 0 15px;padding:42px;background:#fff;border-radius:24px;display:grid;grid-template-columns:1fr 1.15fr;gap:55px;align-items:center}
+.survey-copy h3{font-size:28px;margin:10px 0 15px}.survey-copy p:last-child{font-size:15px}
+.pie-layout{display:flex;align-items:center;justify-content:center;gap:38px}
+.pie-chart{width:230px;height:230px;border-radius:50%;background:conic-gradient(#788b72 0 26.8%,#b79a78 26.8% 52.2%,#c5b96b 52.2% 64.9%,#93a89b 64.9% 76.2%,#d9b7a5 76.2% 86.1%,#8995a4 86.1% 91.7%,#e5e5df 91.7% 100%);position:relative;box-shadow:0 8px 30px rgba(50,60,45,.1)}
+.pie-chart:after{content:"民意調查";position:absolute;inset:58px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:2px;color:#5d6c5a}
+.pie-legend{display:grid;gap:9px;font-size:14px}.pie-legend div{display:flex;align-items:center;gap:8px;justify-content:space-between;min-width:170px}.pie-legend i{width:11px;height:11px;border-radius:50%;display:inline-block}.pie-legend b{font-weight:500;color:#7d6a55}
+.c1{background:#788b72}.c2{background:#b79a78}.c3{background:#c5b96b}.c4{background:#93a89b}.c5{background:#d9b7a5}.c6{background:#8995a4}
+.flip-card{height: 560px;background:transparent;border-radius:20px;overflow:visible;cursor:pointer;box-shadow:none!important;transform:none!important}.flip-card-inner{width:100%;height:100%;position:relative;transition:transform .75s cubic-bezier(.2,.75,.25,1);transform-style:preserve-3d}.flip-card.is-flipped .flip-card-inner{transform:rotateY(180deg)}
+.flip-card-front,.flip-card-back{position:absolute;inset:0;border-radius:20px;overflow:hidden;backface-visibility:hidden;background:#fff;box-shadow:0 12px 35px rgba(50,65,50,.08)}
+.flip-card-back{transform:rotateY(180deg);display:flex;flex-direction:column;background:linear-gradient(145deg,#526753,#314135);color:#fff}
+.meaning-source{margin-top:13px;padding-top:13px;border-top:1px solid #e8e3d9}.meaning-source span{font-size:11px;letter-spacing:2px;color:#8b765e}.meaning-source p{font-size:14px;margin-top:5px;line-height:1.7}
+.flip-hint{font-size:12px;color:#82907f;margin-top:14px}.flip-card-back .flip-hint{margin:auto 26px 22px;color:#c9d4c6;text-align:center}
+.back-top{height:185px;background:rgba(255,255,255,.08);padding:26px;position:relative}.back-top small{letter-spacing:3px;color:#c8d2c4}.back-emoji{position:absolute;font-size:110px;right:28px;bottom:10px;filter:drop-shadow(0 10px 10px rgba(0,0,0,.12))}
+.back-body{padding:34px 30px}.back-meaning{font-size:13px;letter-spacing:2px;color:#d4ddcf}.back-body h3{font-size:34px;margin:8px 0 16px}.back-body>p:last-child{font-size:15px;line-height:1.9}
+.card-note{text-align:center;margin:35px 0 -10px;font-size:13px;color:#7d857b;letter-spacing:1px}
+@media(max-width:900px){.survey-section{grid-template-columns:1fr;gap:30px}.pie-layout{justify-content:flex-start}.flip-card{height:500px}}
+@media(max-width:560px){.survey-section{padding:28px 20px}.pie-layout{flex-direction:column;align-items:center;gap:25px}.pie-legend{width:100%}.pie-chart{width:210px;height:210px}.pie-chart:after{inset:52px}.flip-card{height:525px}}
+@media (max-width: 560px) {
+  .hero-title {
+    font-size: clamp(26px, 7vw, 42px); /* 小螢幕自動縮小字體，確保不會溢出 */
+  }
+}
