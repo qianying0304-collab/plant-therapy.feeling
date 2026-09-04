@@ -176,3 +176,10 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
     grid-template-columns: 1fr;
   }
 }
+/* 統一導覽列 Logo 字體樣式 */
+.navbar .logo a {
+  color: inherit;
+  text-decoration: none;
+  font-size: inherit;
+  font-weight: inherit;
+}
