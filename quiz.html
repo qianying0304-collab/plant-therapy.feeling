@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>植物靈魂特質測驗｜感官植療所</title>
+  <link rel="stylesheet" href="style.css?v=6">
+  <style>
+    /* 僅保留問卷卡片本體的專屬樣式，導覽列樣式完全繼承 style.css */
+    .quiz-wrapper {
+      padding-top: 120px;
+      padding-bottom: 60px;
+      min-height: calc(100vh - 70px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .quiz-container {
+      width: 100%;
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 36px 32px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 12px 32px rgba(52, 66, 56, 0.06);
+      border: 1px solid #e8e3d9;
+      text-align: center;
+    }
+    .progress-bar {
+      height: 6px;
+      background: #f0ece1;
+      border-radius: 10px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 10%;
+      background: #657762;
+      transition: width 0.35s ease-in-out;
+    }
+    .question-step {
+      font-size: 13px;
+      font-weight: 700;
+      color: #8b765e;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .question-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #344238;
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .option-btn {
+      padding: 15px 20px;
+      border: 1.5px solid #e2ded4;
+      background: #faf8f5;
+      border-radius: 12px;
+      color: #344238;
+      font-size: 14.5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+      line-height: 1.5;
+    }
+    .option-btn:hover {
+      border-color: #657762;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(101, 119, 98, 0.12);
+      transform: translateY(-1.5px);
+    }
+    .result-box {
+      display: none;
+    }
+    .result-icon {
+      font-size: 64px;
+      margin-bottom: 12px;
+    }
+    .result-title {
+      font-size: 24px;
+      color: #344238;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .result-desc {
+      font-size: 15px;
+      color: #4a5749;
+      line-height: 1.75;
+      margin-bottom: 32px;
+      text-align: left;
+      background: #f9f8f3;
+      padding: 22px 24px;
+      border-radius: 14px;
+      border: 1px solid #eae5db;
+    }
+    .result-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-action {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-main {
+      background: #657762;
+      color: #ffffff;
+    }
+    .btn-main:hover {
+      background: #4f5f4d;
+    }
+    .btn-secondary {
+      background: #e2ded4;
+      color: #344238;
+    }
+    .btn-secondary:hover {
+      background: #d0c9bd;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo"><a href="index.html#home">感官植療所</a></div>
+  <nav>
+    <a href="index.html#home">首頁</a>
+    <a href="index.html#concept">理念</a>
+    <a href="index.html#plants">植物角色</a>
+    <a href="product.html">產品系列</a>
+    <a href="index.html#sensory">感官體驗</a>
+    <a href="index.html#story">我們的故事</a>
+    <a href="quiz.html" class="active">靈魂測驗</a>
+  </nav>
+</header>
+
+<main class="quiz-wrapper">
+  <div class="quiz-container">
+    <!-- 測驗進行區 -->
+    <div id="quiz-box">
+      <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+      <div id="question-number" class="question-step">QUESTION 01 / 10</div>
+      <h2 class="question-title" id="question-text">載入中...</h2>
+      <div class="options-grid" id="options-container"></div>
+    </div>
+
+    <!-- 測驗結果區 -->
+    <div id="result-box" class="result-box">
+      <div class="result-icon" id="res-icon">🪴</div>
+      <div style="font-size: 13px; color: #8b765e; letter-spacing: 2px; font-weight: 700; margin-bottom: 6px;">YOUR PLANT SOUL</div>
+      <h2 class="result-title" id="res-title">你的植物夥伴</h2>
+      <div class="result-desc" id="res-desc">說明文字...</div>
+      
+      <div class="result-actions">
+        <button onclick="restartQuiz()" class="btn-action btn-secondary">🔄 再測一次</button>
+        <a href="index.html#plants" class="btn-action btn-main">🌿 查看植物角色卡片</a>
+        <a href="index.html" class="btn-action btn-secondary">🏠 返回網站首頁</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const questions = [
+    {
+      q: "1. 經過一整天的忙碌後，回到家你第一件想做的事是？",
+      options: [
+        { text: "A. 戴上抗噪耳機獨處，給自己一段完全安靜的淨化時間。", key: "tiger" },
+        { text: "B. 檢視今天的收穫，順手整理明天待辦事項與清單。", key: "pachira" },
+        { text: "C. 點燃草本香氛，找一本好書或聽音樂激發想像力。", key: "rosemary" },
+        { text: "D. 躺在沙發上滑有趣短影片，隨性放鬆不設限。", key: "coin" },
+        { text: "E. 泡一杯熱茶，給自己一個深呼吸釋放累積的焦慮。", key: "peace" },
+        { text: "F. 立刻打給朋友或家人，分享今天發生的各種趣事。", key: "basil" }
+      ]
+    },
+    {
+      q: "2. 當你身心感到有些疲憊時，哪種場景最能讓你重新充滿能量？",
+      options: [
+        { text: "A. 充滿簡約安全感的私人房間，不受外人干擾。", key: "tiger" },
+        { text: "B. 踏實穩健的學習或工作角落，看著成果逐漸繁茂。", key: "pachira" },
+        { text: "C. 陽光透過葉縫灑落、散發獨特香氣的香草花園。", key: "rosemary" },
+        { text: "D. 熱鬧有活力、隨時有驚喜發生的文創市集。", key: "coin" },
+        { text: "E. 被綠意與白色花朵環繞、寧靜平和的自然山林。", key: "peace" },
+        { text: "F. 氣氛熱絡、充滿美食與歡笑的友人溫馨聚會。", key: "basil" }
+      ]
+    },
+    {
+      q: "3. 面對突如其來的計畫變動或生活挑戰，你的第一反應是？",
+      options: [
+        { text: "A. 保持冷靜沉穩，堅定應對而不輕易被動搖。", key: "tiger" },
+        { text: "B. 迅速評估利弊，尋找最能帶來成果與保障的備案。", key: "pachira" },
+        { text: "C. 敏銳察覺細節變化，從中挖掘意想不到的新靈感。", key: "rosemary" },
+        { text: "D. 圓滑應變隨遇而安，相信船到橋頭自然直。", key: "coin" },
+        { text: "E. 先撫平不安情緒，用溫柔平和的心態接受改變。", key: "peace" },
+        { text: "F. 主動與身邊的人討論，集思廣益熱情解決問題。", key: "basil" }
+      ]
+    },
+    {
+      q: "4. 在朋友或團隊夥伴眼裡，你通常扮演什麼樣的角色？",
+      options: [
+        { text: "A. 獨立冷靜的防護罩，給人滿滿的安全感與信任。", key: "tiger" },
+        { text: "B. 踏實可靠的大佬，總能引領大家走向豐盛目標。", key: "pachira" },
+        { text: "C. 思維活躍的智囊，能給出很有深度與見解的建議。", key: "rosemary" },
+        { text: "D. 隨和圓融的福星，身邊只要有你在就很幸運融洽。", key: "coin" },
+        { text: "E. 溫暖包容的傾聽者，能撫慰所有人的情緒與心事。", key: "peace" },
+        { text: "F. 氣氛帶動者，只要你在的場景就絕不尷尬冷場。", key: "basil" }
+      ]
+    },
+    {
+      q: "5. 如果要挑選一個生活角落，你最希望把它佈置成什麼感覺？",
+      options: [
+        { text: "A. 簡約俐落、線條明確，帶來強烈防禦感與質感。", key: "tiger" },
+        { text: "B. 典雅質樸、擺放有價值與質感的木製家具與植物。", key: "pachira" },
+        { text: "C. 擺滿手作香氛、書籍與植栽，激發專注與創作力。", key: "rosemary" },
+        { text: "D. 擺設圓潤可愛、充滿生活小樂趣的溫馨角落。", key: "coin" },
+        { text: "E. 純淨明亮、柔和無壓力的心靈避風港。", key: "peace" },
+        { text: "F. 適合開派對或擺放料理器具、充滿熱情煙火氣。", key: "basil" }
+      ]
+    },
+    {
+      q: "6. 你如何處理生活中累積的負面情緒或壓力？",
+      options: [
+        { text: "A. 默默自我淨化與消化，拍拍灰塵重新站穩腳步。", key: "tiger" },
+        { text: "B. 將壓力轉化為動力，透過執行計畫來重新找回掌控感。", key: "pachira" },
+        { text: "C. 寫日記、創作或沉浸在愛好中，尋找內心解答。", key: "rosemary" },
+        { text: "D. 不給自己太大負擔，吃頓好吃的順其自然就過去了。", key: "coin" },
+        { text: "E. 透過冥想、感官放鬆，溫柔地允許自己暫時軟弱。", key: "peace" },
+        { text: "F. 找信任的好朋友大聊特聊，釋放後重獲滿滿活力。", key: "basil" }
+      ]
+    },
+    {
+      q: "7. 關於理想中的生活態度，你最認同哪一個觀點？",
+      options: [
+        { text: "A. 「保有獨立自我，守護心中的那份純粹與堅韌。」", key: "tiger" },
+        { text: "B. 「務實耕耘，讓自己的努力開花結果、豐盛滿載。」", key: "pachira" },
+        { text: "C. 「保持好奇與直覺，喚醒無窮的智慧與靈感。」", key: "rosemary" },
+        { text: "D. 「圓滿自在、隨遇而安，順應自然就是最大幸運。」", key: "coin" },
+        { text: "E. 「心靈平靜、溫柔包容，讓歲月靜好、平安無事。」", key: "peace" },
+        { text: "F. 「熱情陪伴、真誠連結，用感染力點亮彼此日常。」", key: "basil" }
+      ]
+    },
+    {
+      q: "8. 當你走進一個完全屬於自己的新空間，最想為它加入什麼樣的氛圍？",
+      options: [
+        { text: "A. 乾淨簡約的幾何視覺，帶有一點肅靜防禦感。", key: "tiger" },
+        { text: "B. 沉穩大氣的木質質感，展現長期累積的實力與格調。", key: "pachira" },
+        { text: "C. 淡雅清香的感知體驗，能讓人靜心思考與學習。", key: "rosemary" },
+        { text: "D. 圓潤輕巧的小巧思，讓整個空間看起來溫馨可愛。", key: "coin" },
+        { text: "E. 柔和採光與純白色調，撫平進到這空間裡的每個躁動。", key: "peace" },
+        { text: "F. 熱鬧有溫度的生活氣息，方便隨時邀請大家來玩。", key: "basil" }
+      ]
+    },
+    {
+      q: "9. 當身邊的朋友達成目標或獲得成功時，你的心態通常是？",
+      options: [
+        { text: "A. 默默在背後給予最堅定穩固的支持與守護。", key: "tiger" },
+        { text: "B. 感到備受鼓舞，自己也要按部就班實現豐盛目標。", key: "pachira" },
+        { text: "C. 為對方的獨特性感到高興，並交流新想法與啟發。", key: "rosemary" },
+        { text: "D. 覺得大家都能圓滿順利太棒了，共享這份好運氣。", key: "coin" },
+        { text: "E. 由衷感到平安幸福，給予對方溫暖有力量的擁抱。", key: "peace" },
+        { text: "F. 超級興奮！第一時間主動揪團舉杯為對方熱烈慶祝。", key: "basil" }
+      ]
+    },
+    {
+      q: "10. 如果用一個狀態來形容你最近最理想的生活節奏，那是：",
+      options: [
+        { text: "A. 不隨波逐流，擁有明確防線與堅定信念。", key: "tiger" },
+        { text: "B. 腳踏實地邁進，看著成果一步步擴展茁壯。", key: "pachira" },
+        { text: "C. 思緒清晰敏銳，隨時能捕捉到生活中的靈光一閃。", key: "rosemary" },
+        { text: "D. 心態彈性輕盈，不論遇到什麼情況都能順應自在。", key: "coin" },
+        { text: "E. 減少無謂紛擾，讓內心時刻保持清澈與平和。", key: "peace" },
+        { text: "F. 充滿社交能量，透過互動與分享傳遞溫度。", key: "basil" }
+      ]
+    }
+  ];
+
+  const plantResults = {
+    tiger: {
+      name: "白芋虎尾蘭",
+      icon: "🪴",
+      desc: "【堅定守護 ✕ 冷靜沉穩】<br>你擁有強大的內心與獨立獨立的氣場。就像白芋虎尾蘭一樣，能淨化周圍的喧囂與混亂，給身邊的人帶來滿滿的安全感。你的存在就是最可靠的屏障。"
+    },
+    pachira: {
+      name: "馬拉巴栗",
+      icon: "🌳",
+      desc: "【事業財富 ✕ 踏實圓融】<br>你是一位務實且具備遠見的創作者或行動者。就像馬拉巴栗般根基紮實、展現旺盛生命力，總能在生活中穩健前行，為自己與團隊招來豐盛與好運。"
+    },
+    rosemary: {
+      name: "迷迭香",
+      icon: "🌿",
+      desc: "【智慧靈感 ✕ 敏銳記憶】<br>你具備細膩的觀察力與豐富的直覺靈感。如同迷迭香清新的草本香氣，你總能喚醒身邊人深層的記憶與靈光一閃的創造力，是個充滿故事的靈魂。"
+    },
+    coin: {
+      name: "銅錢草",
+      icon: "☘️",
+      desc: "【幸福圓滿 ✕ 隨遇而安】<br>你擁有極強的適應力與圓融樂觀的心態。像銅錢草般葉片圓潤可愛，不論身處什麼環境都能蓬勃生長，用你的親和力帶給周圍無限的圓滿與幸運。"
+    },
+    peace: {
+      name: "白鶴芋",
+      icon: "🪷",
+      desc: "【心靈平靜 ✕ 溫柔包容】<br>你內心深處渴望和諧與美好，具備極高的同理心。就像白鶴芋純潔的花朵，能撫平焦慮與不安，用溫柔包容的力量為生活注入一股寧靜清泉。"
+    },
+    basil: {
+      name: "羅勒",
+      icon: "🌱",
+      desc: "【熱情陪伴 ✕ 人際連結】<br>你充滿熱情與生活煙火氣，具備強烈的情感感染力。如同料理中不可或缺的羅勒香氣，只要有你在的地方就充滿活力與歡笑，讓人不由自主想靠近。"
+    }
+  };
+
+  let currentQuestion = 0;
+  let scores = { tiger: 0, pachira: 0, rosemary: 0, coin: 0, peace: 0, basil: 0 };
+
+  function renderQuestion() {
+    const qData = questions[currentQuestion];
+    document.getElementById('question-number').innerText = `QUESTION ${String(currentQuestion + 1).padStart(2, '0')} / 10`;
+    document.getElementById('question-text').innerText = qData.q;
+    document.getElementById('progress').style.width = `${((currentQuestion + 1) / 10) * 100}%`;
+
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+
+    qData.options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.innerText = opt.text;
+      btn.onclick = () => handleSelect(opt.key);
+      container.appendChild(btn);
+    });
+  }
+
+  function handleSelect(key) {
+    scores[key] += 1;
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('quiz-box').style.display = 'none';
+    document.getElementById('result-box').style.display = 'block';
+
+    let maxPlant = 'tiger';
+    let maxScore = -1;
+    for (let key in scores) {
+      if (scores[key] > maxScore) {
+        maxScore = scores[key];
+        maxPlant = key;
+      }
+    }
+
+    const res = plantResults[maxPlant];
+    document.getElementById('res-icon').innerText = res.icon;
+    document.getElementById('res-title').innerText = `你的靈魂植物夥伴：${res.name}`;
+    document.getElementById('res-desc').innerHTML = res.desc;
+  }
+
+  function restartQuiz() {
+    currentQuestion = 0;
+    scores = { tiger: 0, pachira: 0, rosemary: 0, coin: 0, peace: 0, basil: 0 };
+    document.getElementById('result-box').style.display = 'none';
+    document.getElementById('quiz-box').style.display = 'block';
+    renderQuestion();
+  }
+
+  renderQuestion();
+</script>
+
+</body>
+</html>
