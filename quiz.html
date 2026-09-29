@@ -4,10 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>植物靈魂特質測驗｜感官植療所</title>
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
   <style>
+    /* 全局層級校正與遮擋問題修復 */
+    body {
+      position: relative;
+      overflow-x: hidden;
+    }
+
     /* 測驗頁面的核心版面與卡片樣式 */
     .quiz-wrapper {
+      position: relative !important;
+      z-index: 10 !important;
       padding-top: 120px;
       padding-bottom: 60px;
       min-height: calc(100vh - 70px);
@@ -15,6 +23,15 @@
       justify-content: center;
       align-items: center;
     }
+
+    .quiz-wrapper::before,
+    .quiz-wrapper::after,
+    .quiz-container::before,
+    .quiz-container::after {
+      display: none !important;
+      content: none !important;
+    }
+
     .quiz-container {
       width: 100%;
       max-width: 620px;
@@ -22,10 +39,13 @@
       padding: 36px 32px;
       background: #ffffff;
       border-radius: 20px;
-      box-shadow: 0 12px 32px rgba(52, 66, 56, 0.06);
+      box-shadow: 0 12px 32px rgba(52, 66, 56, 0.08);
       border: 1px solid #e8e3d9;
       text-align: center;
+      position: relative;
+      z-index: 15;
     }
+
     .progress-bar {
       height: 6px;
       background: #f0ece1;
@@ -33,12 +53,14 @@
       margin-bottom: 24px;
       overflow: hidden;
     }
+
     .progress-fill {
       height: 100%;
       width: 10%;
       background: #657762;
       transition: width 0.35s ease-in-out;
     }
+
     .question-step {
       font-size: 13px;
       font-weight: 700;
@@ -47,6 +69,7 @@
       margin-bottom: 12px;
       text-transform: uppercase;
     }
+
     .question-title {
       font-size: 20px;
       font-weight: 700;
@@ -54,11 +77,13 @@
       margin-bottom: 24px;
       line-height: 1.5;
     }
+
     .options-grid {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
+
     .option-btn {
       padding: 14px 18px;
       border: 1.5px solid #e2ded4;
@@ -71,25 +96,30 @@
       text-align: left;
       line-height: 1.45;
     }
+
     .option-btn:hover {
       border-color: #657762;
       background: #ffffff;
       box-shadow: 0 4px 12px rgba(101, 119, 98, 0.12);
       transform: translateY(-1px);
     }
+
     .result-box {
       display: none;
     }
+
     .result-icon {
       font-size: 56px;
       margin-bottom: 12px;
     }
+
     .result-title {
       font-size: 22px;
       color: #344238;
       margin-bottom: 16px;
       font-weight: 700;
     }
+
     .result-desc {
       font-size: 14.5px;
       color: #4a5749;
@@ -101,12 +131,14 @@
       border-radius: 14px;
       border: 1px solid #eae5db;
     }
+
     .result-actions {
       display: flex;
       gap: 10px;
       justify-content: center;
       flex-wrap: wrap;
     }
+
     .btn-action {
       display: inline-block;
       padding: 12px 20px;
@@ -118,17 +150,21 @@
       transition: all 0.2s ease;
       border: none;
     }
+
     .btn-main {
       background: #657762;
       color: #ffffff;
     }
+
     .btn-main:hover {
       background: #4f5f4d;
     }
+
     .btn-secondary {
       background: #e2ded4;
       color: #344238;
     }
+
     .btn-secondary:hover {
       background: #d0c9bd;
     }
@@ -136,15 +172,16 @@
 </head>
 <body>
 
-<!-- 頂部導覽列：確保 class 名稱與 index.html 100% 一致 -->
 <header class="navbar">
-  <div class="logo"><a href="index.html#home">感官植療所</a></div>
+  <a href="index.html" class="logo-brand">
+    <span class="logo-title">感官植療所</span>
+  </a>
   <nav>
     <a href="index.html#home">首頁</a>
     <a href="index.html#concept">理念</a>
     <a href="index.html#plants">植物角色</a>
-    <a href="index.html#product">產品</a>
-    <a href="index.html#sensory">感官體驗</a>
+    <a href="product.html">產品</a>
+    <a href="index.html#experience">感官體驗</a>
     <a href="index.html#story">我們的故事</a>
     <a href="quiz.html" class="active">靈魂測驗</a>
   </nav>
@@ -177,7 +214,6 @@
 </main>
 
 <script>
-  // 精簡後的 10 題情境測驗（文字簡短、情境明確）
   const questions = [
     {
       q: "1. 結束忙碌的一天回到家，你的第一反應是？",
