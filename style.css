@@ -1,33 +1,33 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#f4f1e9;color:#344238;line-height:1.8}
+
 /* 解決巨型綠圖遮擋問題 */
 body {
   position: relative;
   overflow-x: hidden;
 }
 
-/* Navbar Logo 放大且不換行 */
+/* Navbar Logo 排版設定 */
 .logo-brand {
   display: flex !important;
   align-items: center !important;
-  gap: 10px;                  /* 圖案與文字之間的間距 */
-  white-space: nowrap !important; /* 強制不換行 */
+  gap: 10px;                  
+  white-space: nowrap !important; 
   text-decoration: none;
 }
 
 .logo-icon {
-  height: 42px !important;    /* 放大 Logo 圖示（原尺寸約 30px） */
+  height: 42px !important;    
   width: auto;
   object-fit: contain;
 }
 
 .logo-title-img {
-  height: 32px !important;    /* 放大標準字圖片 */
+  height: 32px !important;    
   width: auto;
   object-fit: contain;
 }
-
 
 /* 強制測驗容器置頂，防止背景裝飾圖覆蓋 */
 .quiz-wrapper {
@@ -35,7 +35,6 @@ body {
   z-index: 10 !important;
 }
 
-/* 隱藏測驗頁面不小心繼承到的巨型背景偽元素或圖片裝飾 */
 .quiz-wrapper::before,
 .quiz-wrapper::after,
 .quiz-container::before,
@@ -43,24 +42,28 @@ body {
   display: none !important;
   content: none !important;
 }
+
 /* ==========================================
-   全站統一 Header 導覽列 (.navbar)
+   全站統一 Header 導覽列 (.navbar) - 半透明毛玻璃質感
    ========================================== */
-/* 固定導覽列樣式與排版校正 */
 .navbar {
   position: fixed !important;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;                  /* 固定導覽列高度 */
+  height: 70px;                  
   box-sizing: border-box;
   z-index: 1000 !important;
-  background-color: rgba(182, 211, 191, 0.812);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background-color: rgba(247, 245, 240, 0.85) !important; /* 半透明微霧面底色 */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  /* 極細緻溫潤邊線 */
+  border-bottom: 1px solid rgba(52, 66, 56, 0.08);
+  
   display: flex !important;
-  justify-content: space-between !important; /* 左側 Logo、右側選單分開兩端 */
-  align-items: center !important;     /* 垂直居中對齊 */
+  justify-content: space-between !important;
+  align-items: center !important;
   padding: 0 32px !important;
 }
 
@@ -72,11 +75,11 @@ body {
   white-space: nowrap !important;
 }
 
-/* 文字版 Logo 尺寸控制 */
+/* 文字版 Logo 尺寸與顏色控制 */
 .logo-title {
-  font-size: 20px !important;    /* 縮小文字，避免超出頂部 */
+  font-size: 20px !important;
   font-weight: 700;
-  color: #344238;
+  color: #344238 !important; /* 沈穩深綠色文字 */
   letter-spacing: 1px;
 }
 
@@ -84,13 +87,13 @@ body {
 .navbar nav {
   display: flex !important;
   align-items: center !important;
-  gap: 20px !important;          /* 項目之間的間距 */
-  white-space: nowrap !important; /* 強制選單絕不換行 */
+  gap: 20px !important;
+  white-space: nowrap !important;
 }
 
 .navbar nav a {
   text-decoration: none;
-  color: #344238;
+  color: #556350 !important;  /* 柔和的森林灰綠色文字 */
   font-size: 15px;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -98,10 +101,9 @@ body {
 
 .navbar nav a:hover,
 .navbar nav a.active {
-  color: #657762;
+  color: #344238 !important;  /* 滑過或當前頁面時顯示深綠高亮 */
   font-weight: 700;
 }
-
 
 /* ==========================================
    Hero 首頁區塊
@@ -123,7 +125,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  z-index: 20;                        /* 確保文字與按鈕在最上層 */
+  z-index: 20;                        
 }
 
 .eyebrow {
@@ -132,14 +134,14 @@ body {
   color: #8b765e;
 }
 
-/* 左側標準字圖片 */
+/* 左側標準字圖片：移除濾鏡，呈現圖片原始顏色 */
 .hero-title-img {
   width: 100%;
   max-width: 480px;                   
   height: auto;
   display: block;
   margin: 12px 0 18px;     
-  filter: brightness(0.3) hue-rotate(80deg) saturate(2);
+  filter: none !important;
 }
 
 .hero-tagline {
@@ -156,12 +158,12 @@ body {
   margin-bottom: 25px;
 }
 
-/* 按鈕點擊防護 */
+/* 按鈕樣式：套用指定的 #89a368 質感草綠 */
 .btn {
   display: inline-block;
   padding: 14px 28px;
-  background-color: #344238;
-  color: #f4f1e9 !important;
+  background-color: #89a368 !important;
+  color: #ffffff !important;
   text-decoration: none;
   border-radius: 30px;
   font-size: 15px;
@@ -169,16 +171,16 @@ body {
   letter-spacing: 1px;
   transition: all 0.3s ease;
   margin-top: 15px;
-  box-shadow: 0 4px 12px rgba(52, 66, 56, 0.15);
+  box-shadow: 0 4px 12px rgba(137, 163, 104, 0.25);
   cursor: pointer !important;
   position: relative !important;
   z-index: 999 !important;
 }
 
 .btn:hover {
-  background-color: #4a5d4f;
+  background-color: #789257 !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(52, 66, 56, 0.25);
+  box-shadow: 0 6px 16px rgba(137, 163, 104, 0.35);
   color: #ffffff !important;
 }
 
@@ -196,18 +198,20 @@ body {
 .hero-art-logo {
   position: relative;
   z-index: 2;
-  width: 85%;                         
-  max-width: 420px;                   
+  width: 75%;                         
+  max-width: 360px;                   
   height: auto;
   aspect-ratio: 1 / 1;                
   object-fit: contain;
   display: block;
-  filter: brightness(0.25) hue-rotate(85deg) saturate(1.8) drop-shadow(0 10px 20px rgba(52, 66, 56, 0.12));
+  
+  opacity: 0.9;
+  filter: drop-shadow(0 15px 30px rgba(52, 66, 56, 0.12));
   transition: transform 0.4s ease;
 }
 
 .hero-art-logo:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .circle-note {
@@ -245,7 +249,7 @@ h2{font-size:48px;line-height:1.35;letter-spacing:2px}
 .product-copy h2{margin:15px 0 25px}.product-copy>p{margin-bottom:18px;font-size:16px}
 .feature-list{display:grid;gap:16px;margin-top:35px}.feature-list>div{display:flex;gap:20px;align-items:center;padding-top:14px;border-top:1px solid #ddd7cb}.feature-list b{color:#8b765e}.feature-list small{color:#7b8378}
 .experience{background:#344238;color:#fff}.experience h2{margin-top:15px}.experience .section-label{color:#aab8a3}.sense-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:55px;margin-top:70px}.sense-grid div{border-top:1px solid #879486;padding-top:22px}.sense-grid span{color:#aab8a3}.sense-grid h3{font-size:30px;margin:10px 0}
-.story{text-align:center;background:#e5eadf}.story-inner{max-width:760px;margin:auto}.story h2{margin:15px 0 25px}.story p{font-size:17px;max-width:650px;margin:0 auto 30px}.btn.light{background:#344238}
+.story{text-align:center;background:#e5eadf}.story-inner{max-width:760px;margin:auto}.story h2{margin:15px 0 25px}.story p{font-size:17px;max-width:650px;margin:0 auto 30px}.btn.light{background:#344238 !important}
 footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px}footer strong{font-size:21px;letter-spacing:3px}footer span,footer small{color:#b9c1b8;font-size:12px;letter-spacing:2px}
 
 /* ===== 民調與卡片反轉效果 ===== */
@@ -319,7 +323,7 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
     height: auto !important;
     min-height: 56px;
     padding: 10px 16px !important;
-    flex-direction: column !important;    /* 手機版將 Logo 與選單上下分列 */
+    flex-direction: column !important;    
     align-items: flex-start !important;
     gap: 8px !important;
   }
@@ -328,28 +332,25 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
     font-size: 18px !important;
   }
 
-  /* 右側選單轉為可左右滑動的橫向選單 */
   .navbar nav {
     width: 100% !important;
     display: flex !important;
     gap: 14px !important;
-    overflow-x: auto !important;          /* 支援左右滑動 */
-    white-space: nowrap !important;       /* 強制選單項目不換行 */
+    overflow-x: auto !important;          
+    white-space: nowrap !important;       
     padding-bottom: 4px;
-    -webkit-overflow-scrolling: touch;    /* iOS 滑動順暢度優化 */
+    -webkit-overflow-scrolling: touch;    
   }
 
-  /* 隱藏手機版滑動條 */
   .navbar nav::-webkit-scrollbar {
     display: none;
   }
 
   .navbar nav a {
-    font-size: 13.5px !important;        /* 稍微縮小手機版字體 */
-    flex-shrink: 0 !important;            /* 防止選單文字被壓縮 */
+    font-size: 13.5px !important;        
+    flex-shrink: 0 !important;            
   }
 
-  /* 調整 Hero 區塊的頂部內距，避免被變高的 Navbar 擋住 */
   main, .hero, .quiz-wrapper {
     padding-top: 90px !important;
   }
