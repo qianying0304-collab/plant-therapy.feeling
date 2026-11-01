@@ -2,7 +2,6 @@
 html{scroll-behavior:smooth}
 body{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#f4f1e9;color:#344238;line-height:1.8}
 
-/* 解決巨型綠圖遮擋問題 */
 body {
   position: relative;
   overflow-x: hidden;
@@ -29,7 +28,7 @@ body {
   object-fit: contain;
 }
 
-/* 強制測驗容器置頂，防止背景裝飾圖覆蓋 */
+/* 強制測驗容器置頂 */
 .quiz-wrapper {
   position: relative !important;
   z-index: 10 !important;
@@ -44,7 +43,7 @@ body {
 }
 
 /* ==========================================
-   全站統一 Header 導覽列 (.navbar) - 半透明毛玻璃質感
+   全站統一 Header 導覽列 (.navbar)
    ========================================== */
 .navbar {
   position: fixed !important;
@@ -54,36 +53,23 @@ body {
   height: 70px;                  
   box-sizing: border-box;
   z-index: 1000 !important;
-  background-color: rgba(247, 245, 240, 0.85) !important; /* 半透明微霧面底色 */
+  background-color: rgba(247, 245, 240, 0.85) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  
-  /* 極細緻溫潤邊線 */
   border-bottom: 1px solid rgba(52, 66, 56, 0.08);
-  
   display: flex !important;
   justify-content: space-between !important;
   align-items: center !important;
   padding: 0 32px !important;
 }
 
-/* 左側品牌名稱 */
-.logo-brand {
-  display: flex !important;
-  align-items: center !important;
-  text-decoration: none;
-  white-space: nowrap !important;
-}
-
-/* 文字版 Logo 尺寸與顏色控制 */
 .logo-title {
   font-size: 20px !important;
   font-weight: 700;
-  color: #344238 !important; /* 沈穩深綠色文字 */
+  color: #344238 !important;
   letter-spacing: 1px;
 }
 
-/* 右側選單區域 */
 .navbar nav {
   display: flex !important;
   align-items: center !important;
@@ -93,7 +79,7 @@ body {
 
 .navbar nav a {
   text-decoration: none;
-  color: #556350 !important;  /* 柔和的森林灰綠色文字 */
+  color: #556350 !important;
   font-size: 15px;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -101,7 +87,7 @@ body {
 
 .navbar nav a:hover,
 .navbar nav a.active {
-  color: #344238 !important;  /* 滑過或當前頁面時顯示深綠高亮 */
+  color: #344238 !important;
   font-weight: 700;
 }
 
@@ -134,7 +120,6 @@ body {
   color: #8b765e;
 }
 
-/* 左側標準字圖片：移除濾鏡，呈現圖片原始顏色 */
 .hero-title-img {
   width: 100%;
   max-width: 480px;                   
@@ -158,12 +143,12 @@ body {
   margin-bottom: 25px;
 }
 
-/* 按鈕樣式：套用指定的 #89a368 質感草綠 */
+/* 按鈕指定色 #75865e */
 .btn {
   display: inline-block;
   padding: 14px 28px;
-  background-color: #89a368 !important;
-  color: #ffffff !important;
+  background-color: #75865e !important;
+  color: #f7f5f0 !important;
   text-decoration: none;
   border-radius: 30px;
   font-size: 15px;
@@ -171,20 +156,19 @@ body {
   letter-spacing: 1px;
   transition: all 0.3s ease;
   margin-top: 15px;
-  box-shadow: 0 4px 12px rgba(137, 163, 104, 0.25);
+  box-shadow: 0 4px 12px rgba(117, 134, 94, 0.25);
   cursor: pointer !important;
   position: relative !important;
   z-index: 999 !important;
 }
 
 .btn:hover {
-  background-color: #789257 !important;
+  background-color: #64734f !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(137, 163, 104, 0.35);
+  box-shadow: 0 6px 16px rgba(117, 134, 94, 0.35);
   color: #ffffff !important;
 }
 
-/* 右側視覺區塊 */
 .hero-art {
   height: auto;
   min-height: 400px;
@@ -204,7 +188,6 @@ body {
   aspect-ratio: 1 / 1;                
   object-fit: contain;
   display: block;
-  
   opacity: 0.9;
   filter: drop-shadow(0 15px 30px rgba(52, 66, 56, 0.12));
   transition: transform 0.4s ease;
@@ -241,19 +224,67 @@ h2{font-size:48px;line-height:1.35;letter-spacing:2px}
 .plants{background:#f4f1e9}.title-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:25px;align-items:end}.title-row>p{max-width:480px}
 .plant-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:55px}
 .plant-card{background:#fff;border-radius:20px;overflow:hidden;transition:.3s}.plant-card:hover{transform:translateY(-8px);box-shadow:0 18px 45px rgba(50,65,50,.1)}
-.plant-visual{height: 200px;display:flex;align-items:center;justify-content:center;font-size:100px}
+
+/* ==========================================
+   植物角色 PNG 去背圖片排版設定
+   ========================================== */
+.plant-visual {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.plant-visual img.plant-char-img {
+  max-width: 100%;
+  max-height: 170px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(50, 65, 50, 0.12));
+  transition: transform 0.35s cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.plant-card:hover .plant-char-img {
+  transform: scale(1.06);
+}
+
 .rosemary{background:#dce5d7}.peace{background:#ece8df}.pachira{background:#d5ded1}
 .card-body{padding:28px}.card-body small{color:#8b765e;letter-spacing:2px}.card-body h3{font-size:30px;margin:4px 0 10px}.card-body p{font-size:15px}
 .product{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;background:#fff}
 .product-art{display:flex;justify-content:center}.ceramic-pot{width:410px;height:410px;border-radius:50%;background:#cbb193;display:flex;align-items:center;justify-content:center;font-size:130px;box-shadow:inset -25px -25px 45px rgba(80,55,35,.13),0 25px 55px rgba(60,50,40,.1)}
 .product-copy h2{margin:15px 0 25px}.product-copy>p{margin-bottom:18px;font-size:16px}
 .feature-list{display:grid;gap:16px;margin-top:35px}.feature-list>div{display:flex;gap:20px;align-items:center;padding-top:14px;border-top:1px solid #ddd7cb}.feature-list b{color:#8b765e}.feature-list small{color:#7b8378}
-.experience{background:#344238;color:#fff}.experience h2{margin-top:15px}.experience .section-label{color:#aab8a3}.sense-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:55px;margin-top:70px}.sense-grid div{border-top:1px solid #879486;padding-top:22px}.sense-grid span{color:#aab8a3}.sense-grid h3{font-size:30px;margin:10px 0}
-.story{text-align:center;background:#e5eadf}.story-inner{max-width:760px;margin:auto}.story h2{margin:15px 0 25px}.story p{font-size:17px;max-width:650px;margin:0 auto 30px}.btn.light{background:#344238 !important}
-footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px}footer strong{font-size:21px;letter-spacing:3px}footer span,footer small{color:#b9c1b8;font-size:12px;letter-spacing:2px}
+
+/* 感官體驗區塊 */
+.experience{background:#75865e !important;color:#fff}
+.experience h2{margin-top:15px}
+.experience .section-label{color:#e2e8df}
+.sense-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:55px;margin-top:70px}
+.sense-grid div{border-top:1px solid rgba(255,255,255,0.3);padding-top:22px}
+.sense-grid span{color:#e2e8df}
+.sense-grid h3{font-size:30px;margin:10px 0}
+
+.story{text-align:center;background:#e5eadf}.story-inner{max-width:760px;margin:auto}.story h2{margin:15px 0 25px}.story p{font-size:17px;max-width:650px;margin:0 auto 30px}
+.btn.light{background:#75865e !important}
+.btn.light:hover{background:#64734f !important}
+
+/* 頁尾 Footer */
+footer{
+  padding:45px 9%;
+  background:#75865e !important;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+footer strong{font-size:21px;letter-spacing:3px}
+footer span,footer small{color:#e2e8df;font-size:12px;letter-spacing:2px}
 
 /* ===== 民調與卡片反轉效果 ===== */
-.character{display:block;margin-top:16px;color:#657762;font-size:14px;line-height:1.7}
+.character{display:block;margin-top:16px;color:#d5e0d0;font-size:14px;line-height:1.7}
 .meaning-note{margin-top:55px;padding:30px;text-align:center;background:#e5eadf;border-radius:18px}
 .meaning-note h3{font-size:25px;margin-bottom:8px}
 .meaning-note p{letter-spacing:2px;color:#5f705d}
@@ -271,16 +302,40 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
 .pie-legend>div b{margin-left:auto;font-weight:600;color:#657762;font-size:14px}
 .c1{background:#788b72}.c2{background:#b79a78}.c3{background:#c5b96b}.c4{background:#93a89b}.c5{background:#d9b7a5}.c6{background:#8995a4}
 
-.flip-card{height: 560px;background:transparent;border-radius:20px;overflow:visible;cursor:pointer;box-shadow:none!important;transform:none!important}.flip-card-inner{width:100%;height:100%;position:relative;transition:transform .75s cubic-bezier(.2,.75,.25,1);transform-style:preserve-3d}.flip-card.is-flipped .flip-card-inner{transform:rotateY(180deg)}
+.flip-card{height: 560px;background:transparent;border-radius:20px;overflow:visible;cursor:pointer;box-shadow:none!important;transform:none!important}
+.flip-card-inner{width:100%;height:100%;position:relative;transition:transform .75s cubic-bezier(.2,.75,.25,1);transform-style:preserve-3d}
+.flip-card.is-flipped .flip-card-inner{transform:rotateY(180deg)}
 .flip-card-front,.flip-card-back{position:absolute;inset:0;border-radius:20px;overflow:hidden;backface-visibility:hidden;background:#fff;box-shadow:0 12px 35px rgba(50,65,50,.08)}
-.flip-card-back{transform:rotateY(180deg);display:flex;flex-direction:column;background:linear-gradient(145deg,#526753,#314135);color:#fff}
-.meaning-source{margin-top:13px;padding-top:13px;border-top:1px solid #e8e3d9}.meaning-source span{font-size:11px;letter-spacing:2px;color:#8b765e}.meaning-source p{font-size:14px;margin-top:5px;line-height:1.7}
-.flip-hint{font-size:12px;color:#82907f;margin-top:14px}.flip-card-back .flip-hint{margin:auto 26px 22px;color:#c9d4c6;text-align:center}
-.back-top{height:185px;background:rgba(255,255,255,.08);padding:26px;position:relative}.back-top small{letter-spacing:3px;color:#c8d2c4}.back-emoji{position:absolute;font-size:110px;right:28px;bottom:10px;filter:drop-shadow(0 10px 10px rgba(0,0,0,.12))}
-.back-body{padding:34px 30px}.back-meaning{font-size:13px;letter-spacing:2px;color:#d4ddcf}.back-body h3{font-size:34px;margin:8px 0 16px}.back-body>p:last-child{font-size:15px;line-height:1.9}
+
+.flip-card-back{transform:rotateY(180deg);display:flex;flex-direction:column;background:linear-gradient(145deg,#75865e,#5e6d4a);color:#fff}
+
+.meaning-source{margin-top:13px;padding-top:13px;border-top:1px solid rgba(52,66,56,0.1)}
+.meaning-source span{font-size:11px;letter-spacing:2px;color:#657762 !important;font-weight:700}
+.meaning-source p{font-size:14px;margin-top:5px;line-height:1.7;color:#344238 !important}
+.flip-hint{font-size:13px !important;color:#556350 !important;margin-top:14px;font-weight:500}
+.flip-card-back .flip-hint{margin:auto 26px 22px;color:#e2e8df !important;text-align:center}
+
+.back-top{height:185px;background:rgba(255,255,255,.08);padding:26px;position:relative}
+.back-top small{letter-spacing:3px;color:#e2e8df !important}
+
+/* 卡片背面小插圖 */
+.back-top .back-char-img {
+  position: absolute;
+  height: 110px;
+  width: auto;
+  right: 20px;
+  bottom: 5px;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
+}
+
+.back-body{padding:34px 30px}
+.back-meaning{font-size:13px;letter-spacing:2px;color:#e2e8df !important}
+.back-body h3{font-size:34px;margin:8px 0 16px;color:#ffffff !important}
+.back-body>p:last-child{font-size:15px;line-height:1.9;color:#f7f5f0 !important}
 .card-note{text-align:center;margin:35px 0 -10px;font-size:13px;color:#7d857b;letter-spacing:1px}
 
-/* ===== 獨立產品頁面 (product.html) 樣式 ===== */
+/* ===== 獨立產品頁面 ===== */
 .merch-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px}
 .merch-card{background:#f4f1e9;padding:35px 25px;border-radius:20px;text-align:center;transition:transform 0.3s ease, box-shadow 0.3s ease}
 .merch-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(50,65,50,0.08)}
@@ -289,7 +344,7 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
 .merch-card p{font-size:14.5px;color:#5d6c5a;line-height:1.7}
 
 /* ==========================================
-   響應式 RWD 語法（手機與平板支援）
+   響應式 RWD 語法
    ========================================== */
 @media (max-width: 900px) {
   .hero {
@@ -304,8 +359,8 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
     height: 380px;
   }
   .hero-art-logo {
-    width: 280px;
-    height: 280px;
+    width: 240px;
+    height: 240px;
   }
   .concept-grid,.product,.title-row{grid-template-columns:1fr;gap:45px}
   .values,.plant-grid,.sense-grid,.merch-grid{grid-template-columns:1fr}
@@ -317,7 +372,6 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
   h2{font-size:38px}
 }
 
-/* 手機版導覽列與排版最佳化 */
 @media (max-width: 768px) {
   .navbar {
     height: auto !important;
@@ -354,4 +408,9 @@ footer{padding:45px 9%;background:#263129;color:#fff;display:flex;align-items:ce
   main, .hero, .quiz-wrapper {
     padding-top: 90px !important;
   }
+}/* ==========================================
+   調整白鶴芋卡片上方的視覺區塊背景，增加層次感
+   ========================================== */
+.peace {
+  background: #ddded4 !important; /* 將原本太淺的顏色調整為帶有質感的淺綠灰色，與大背景區隔 */
 }
