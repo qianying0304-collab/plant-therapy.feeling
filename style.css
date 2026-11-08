@@ -53,9 +53,9 @@ body {
   height: 70px;                  
   box-sizing: border-box;
   z-index: 1000 !important;
-  background-color: rgba(247, 245, 240, 0.85) !important;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(247, 245, 240, 0.88) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(52, 66, 56, 0.08);
   display: flex !important;
   justify-content: space-between !important;
@@ -73,7 +73,7 @@ body {
 .navbar nav {
   display: flex !important;
   align-items: center !important;
-  gap: 20px !important;
+  gap: 24px !important;
   white-space: nowrap !important;
 }
 
@@ -82,7 +82,8 @@ body {
   color: #556350 !important;
   font-size: 15px;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
 }
 
 .navbar nav a:hover,
@@ -143,7 +144,6 @@ body {
   margin-bottom: 25px;
 }
 
-/* 按鈕指定色 #75865e */
 .btn {
   display: inline-block;
   padding: 14px 28px;
@@ -210,24 +210,22 @@ body {
 }
 
 /* ==========================================
-   內文區塊樣式
+   內文區塊樣式與文字編排
    ========================================== */
 .section{padding:120px 9%}
-.section-label{font-size:12px;letter-spacing:3px;color:#8b765e;margin-bottom:10px}
+.section-label{font-size:12px;letter-spacing:3px;color:#8b765e;margin-bottom:10px;font-weight:600}
 .concept{background:#fff}
 .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:35px}
-h2{font-size:48px;line-height:1.35;letter-spacing:2px}
-.copy{font-size:17px}.copy p{margin-bottom:22px}
+h2{font-size:46px;line-height:1.35;letter-spacing:2px;font-weight:700}
+.copy{font-size:16.5px;color:#4a5749}.copy p{margin-bottom:20px;line-height:1.8}
 .values{display:grid;grid-template-columns:repeat(3,1fr);background:#e5eadf}
 .value{padding:65px 9%;border-right:1px solid rgba(52,66,56,.12)}.value:last-child{border:0}
-.value span{font-size:12px;color:#8b765e;letter-spacing:2px}.value h3{font-size:32px;margin:10px 0}.value p{max-width:350px}
-.plants{background:#f4f1e9}.title-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:25px;align-items:end}.title-row>p{max-width:480px}
-.plant-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:55px}
-.plant-card{background:#fff;border-radius:20px;overflow:hidden;transition:.3s}.plant-card:hover{transform:translateY(-8px);box-shadow:0 18px 45px rgba(50,65,50,.1)}
+.value span{font-size:12px;color:#8b765e;letter-spacing:2px;font-weight:600}.value h3{font-size:30px;margin:10px 0 12px;color:#344238}.value p{max-width:350px;color:#556350;font-size:14.5px}
+.plants{background:#f4f1e9}.title-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:25px;align-items:end}.title-row>p{max-width:480px;font-size:15px;color:#556350}
+.plant-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:55px}
+.plant-card{background:transparent;border-radius:20px;overflow:hidden;transition:.3s}
 
-/* ==========================================
-   植物角色 PNG 去背圖片排版設定
-   ========================================== */
+/* 植物圖片與視覺卡片 */
 .plant-visual {
   height: 200px;
   display: flex;
@@ -250,12 +248,28 @@ h2{font-size:48px;line-height:1.35;letter-spacing:2px}
   transform: scale(1.06);
 }
 
-.rosemary{background:#dce5d7}.peace{background:#ece8df}.pachira{background:#d5ded1}
-.card-body{padding:28px}.card-body small{color:#8b765e;letter-spacing:2px}.card-body h3{font-size:30px;margin:4px 0 10px}.card-body p{font-size:15px}
+.rosemary{background:#dce5d7}
+.peace{background:#ddded4 !important;}
+.pachira{background:#d5ded1}
+.snake{background:#e0e5d9}
+.money{background:#e8e5cf}
+.basil{background:#dce5d7}
+
+.card-body {
+  padding: 24px 28px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body small{color:#8b765e;letter-spacing:2px;font-size:12px;font-weight:600}
+.card-body h3{font-size:28px;margin:4px 0 10px;color:#344238}
+.card-body p{font-size:14.5px;color:#556350;line-height:1.7}
+
 .product{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center;background:#fff}
 .product-art{display:flex;justify-content:center}.ceramic-pot{width:410px;height:410px;border-radius:50%;background:#cbb193;display:flex;align-items:center;justify-content:center;font-size:130px;box-shadow:inset -25px -25px 45px rgba(80,55,35,.13),0 25px 55px rgba(60,50,40,.1)}
-.product-copy h2{margin:15px 0 25px}.product-copy>p{margin-bottom:18px;font-size:16px}
-.feature-list{display:grid;gap:16px;margin-top:35px}.feature-list>div{display:flex;gap:20px;align-items:center;padding-top:14px;border-top:1px solid #ddd7cb}.feature-list b{color:#8b765e}.feature-list small{color:#7b8378}
+.product-copy h2{margin:15px 0 25px}.product-copy>p{margin-bottom:18px;font-size:16px;color:#4a5749}
+.feature-list{display:grid;gap:16px;margin-top:35px}.feature-list>div{display:flex;gap:20px;align-items:center;padding-top:14px;border-top:1px solid #ddd7cb}.feature-list b{color:#8b765e;font-size:18px}.feature-list small{color:#7b8378;font-size:13px}
 
 /* 感官體驗區塊 */
 .experience{background:#75865e !important;color:#fff}
@@ -263,10 +277,11 @@ h2{font-size:48px;line-height:1.35;letter-spacing:2px}
 .experience .section-label{color:#e2e8df}
 .sense-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:55px;margin-top:70px}
 .sense-grid div{border-top:1px solid rgba(255,255,255,0.3);padding-top:22px}
-.sense-grid span{color:#e2e8df}
-.sense-grid h3{font-size:30px;margin:10px 0}
+.sense-grid span{color:#e2e8df;font-size:13px;letter-spacing:1px}
+.sense-grid h3{font-size:28px;margin:10px 0;font-weight:700}
+.sense-grid p{font-size:14.5px;color:#f0f4ee;line-height:1.7}
 
-.story{text-align:center;background:#e5eadf}.story-inner{max-width:760px;margin:auto}.story h2{margin:15px 0 25px}.story p{font-size:17px;max-width:650px;margin:0 auto 30px}
+.story{text-align:center;background:#e5eadf}.story-inner{max-width:760px;margin:auto}.story h2{margin:15px 0 25px}.story p{font-size:17px;max-width:650px;margin:0 auto 30px;color:#4a5749}
 .btn.light{background:#75865e !important}
 .btn.light:hover{background:#64734f !important}
 
@@ -280,67 +295,124 @@ footer{
   justify-content:space-between;
   gap:20px;
 }
-footer strong{font-size:21px;letter-spacing:3px}
+footer strong{font-size:20px;letter-spacing:3px;font-weight:700}
 footer span,footer small{color:#e2e8df;font-size:12px;letter-spacing:2px}
 
-/* ===== 民調與卡片反轉效果 ===== */
-.character{display:block;margin-top:16px;color:#d5e0d0;font-size:14px;line-height:1.7}
-.meaning-note{margin-top:55px;padding:30px;text-align:center;background:#e5eadf;border-radius:18px}
-.meaning-note h3{font-size:25px;margin-bottom:8px}
-.meaning-note p{letter-spacing:2px;color:#5f705d}
-.meaning-note span{display:block;margin-top:10px;font-size:12px;color:#7d857b}
-.snake{background:#e0e5d9}.money{background:#e8e5cf}.basil{background:#dce5d7}
-
-.survey-section{margin:65px 0 15px;padding:42px;background:#fff;border-radius:24px;display:grid;grid-template-columns:1fr 1.15fr;gap:55px;align-items:center}
-.survey-copy h3{font-size:28px;margin:10px 0 15px}.survey-copy p:last-child{font-size:15px}
+/* ===== 民調與雙面翻轉卡片系統 ===== */
+.survey-section{margin:65px 0 15px;padding:42px;background:#fff;border-radius:24px;display:grid;grid-template-columns:1fr 1.15fr;gap:55px;align-items:center;box-shadow:0 8px 24px rgba(52,66,56,0.04)}
+.survey-copy h3{font-size:28px;margin:10px 0 15px;color:#344238}.survey-copy p:last-child{font-size:14.5px;color:#556350}
 .pie-layout{display:flex;align-items:center;justify-content:center;gap:38px}
-.pie-chart{width:230px;height:230px;border-radius:50%;background:conic-gradient(#788b72 0 26.8%,#b79a78 26.8% 52.2%,#c5b96b 52.2% 64.9%,#93a89b 64.9% 76.2%,#d9b7a5 76.2% 86.1%,#8995a4 86.1% 91.7%,#e5e5df 91.7% 100%);position:relative;box-shadow:0 8px 30px rgba(50,60,45,.1)}
-.pie-chart:after{content:"民意調查";position:absolute;inset:58px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:2px;color:#5d6c5a}
+.pie-chart{width:220px;height:220px;border-radius:50%;background:conic-gradient(#788b72 0 26.8%,#b79a78 26.8% 52.2%,#c5b96b 52.2% 64.9%,#93a89b 64.9% 76.2%,#d9b7a5 76.2% 86.1%,#8995a4 86.1% 91.7%,#e5e5df 91.7% 100%);position:relative;box-shadow:0 8px 28px rgba(50,60,45,.12)}
+.pie-chart:after{content:"民意調查";position:absolute;inset:55px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:2px;color:#5d6c5a;font-weight:600}
 .pie-legend{display:flex;flex-direction:column;gap:10px}
 .pie-legend>div{display:flex;align-items:center;font-size:14px;color:#344238}
 .pie-legend>div i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;flex-shrink:0}
 .pie-legend>div b{margin-left:auto;font-weight:600;color:#657762;font-size:14px}
 .c1{background:#788b72}.c2{background:#b79a78}.c3{background:#c5b96b}.c4{background:#93a89b}.c5{background:#d9b7a5}.c6{background:#8995a4}
 
-.flip-card{height: 560px;background:transparent;border-radius:20px;overflow:visible;cursor:pointer;box-shadow:none!important;transform:none!important}
+.flip-card{height: 600px;background:transparent;border-radius:20px;overflow:visible;cursor:pointer;box-shadow:none!important;transform:none!important}
 .flip-card-inner{width:100%;height:100%;position:relative;transition:transform .75s cubic-bezier(.2,.75,.25,1);transform-style:preserve-3d}
 .flip-card.is-flipped .flip-card-inner{transform:rotateY(180deg)}
-.flip-card-front,.flip-card-back{position:absolute;inset:0;border-radius:20px;overflow:hidden;backface-visibility:hidden;background:#fff;box-shadow:0 12px 35px rgba(50,65,50,.08)}
 
-.flip-card-back{transform:rotateY(180deg);display:flex;flex-direction:column;background:linear-gradient(145deg,#75865e,#5e6d4a);color:#fff}
+/* 正面卡牌結構 */
+.flip-card-front{position:absolute;inset:0;border-radius:20px;overflow:hidden;backface-visibility:hidden;background:#fff;box-shadow:0 12px 35px rgba(50,65,50,.08);display:flex;flex-direction:column;}
 
-.meaning-source{margin-top:13px;padding-top:13px;border-top:1px solid rgba(52,66,56,0.1)}
-.meaning-source span{font-size:11px;letter-spacing:2px;color:#657762 !important;font-weight:700}
-.meaning-source p{font-size:14px;margin-top:5px;line-height:1.7;color:#344238 !important}
-.flip-hint{font-size:13px !important;color:#556350 !important;margin-top:14px;font-weight:500}
-.flip-card-back .flip-hint{margin:auto 26px 22px;color:#e2e8df !important;text-align:center}
+/* 背面質感卡牌 (稍微調淡的柔和質感綠色) */
+.flip-card-back{position:absolute;inset:0;border-radius:20px;overflow:hidden;backface-visibility:hidden;transform:rotateY(180deg);display:flex;flex-direction:column;background:linear-gradient(145deg,#7e8f69,#657651);color:#fff;box-shadow:0 12px 35px rgba(50,65,50,.1)}
 
-.back-top{height:185px;background:rgba(255,255,255,.08);padding:26px;position:relative}
-.back-top small{letter-spacing:3px;color:#e2e8df !important}
+.meaning-source{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.2)}
+.meaning-source span{font-size:11px;letter-spacing:2px;color:#d5e0d0 !important;font-weight:600}
+.meaning-source p{font-size:13.5px;margin-top:4px;line-height:1.65;color:#f7f5f0 !important}
 
-/* 卡片背面小插圖 */
-.back-top .back-char-img {
-  position: absolute;
-  height: 110px;
-  width: auto;
-  right: 20px;
-  bottom: 5px;
-  object-fit: contain;
-  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
+/* 正面底部提示：改為乾淨純文字，無色塊 */
+.flip-card-front .flip-hint {
+  margin-top: auto;
+  margin-bottom: 20px;
+  background: transparent !important;
+  border: none !important;
+  color: #7d857b !important;
+  text-align: center;
+  letter-spacing: 1.5px;
+  font-size: 13px !important;
+  font-weight: 500;
 }
 
-.back-body{padding:34px 30px}
-.back-meaning{font-size:13px;letter-spacing:2px;color:#e2e8df !important}
-.back-body h3{font-size:34px;margin:8px 0 16px;color:#ffffff !important}
-.back-body>p:last-child{font-size:15px;line-height:1.9;color:#f7f5f0 !important}
-.card-note{text-align:center;margin:35px 0 -10px;font-size:13px;color:#7d857b;letter-spacing:1px}
+/* 背面底部質感引導色塊區 (調淡深綠區塊) */
+.flip-card-back .flip-hint {
+  margin-top: auto;
+  margin-bottom: 0;
+  padding: 16px 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f4f8f2 !important;
+  text-align: center;
+  letter-spacing: 1.5px;
+  font-size: 13px !important;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
 
-/* ===== 獨立產品頁面 ===== */
+.flip-card:hover .flip-card-back .flip-hint {
+  background: rgba(0, 0, 0, 0.18);
+}
+
+/* 背面上方角色展示區 (.back-top)：純白背景 */
+.back-top {
+  height: 220px;
+  background: #ffffff !important;
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.back-top small {
+  letter-spacing: 3px;
+  color: #8b765e !important;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* 角色圖置中放大，展現主角張力 */
+.back-top .back-char-img {
+  position: absolute;
+  max-height: 160px;
+  max-width: 85%;
+  width: auto;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12));
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.flip-card:hover .back-char-img {
+  transform: translate(-50%, -53%) scale(1.04);
+}
+
+.back-body {
+  padding: 20px 26px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-meaning{font-size:12.5px;letter-spacing:2px;color:#d5e0d0 !important;font-weight:500}
+.back-body h3{font-size:30px;margin:4px 0 8px;color:#ffffff !important;font-weight:700}
+
+/* ==========================================
+   獨立產品頁面
+   ========================================== */
 .merch-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:30px}
 .merch-card{background:#f4f1e9;padding:35px 25px;border-radius:20px;text-align:center;transition:transform 0.3s ease, box-shadow 0.3s ease}
 .merch-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(50,65,50,0.08)}
 .merch-visual{font-size:80px;margin-bottom:20px}
-.merch-card h3{font-size:22px;margin-bottom:12px;color:#344238}
+.merch-card h3{font-size:22px;margin-bottom:12px;color:#344238;font-weight:700}
 .merch-card p{font-size:14.5px;color:#5d6c5a;line-height:1.7}
 
 /* ==========================================
@@ -367,7 +439,7 @@ footer span,footer small{color:#e2e8df;font-size:12px;letter-spacing:2px}
   .value{border-right:0;border-bottom:1px solid rgba(52,66,56,.12)}
   .survey-section{grid-template-columns:1fr;gap:30px}
   .pie-layout{justify-content:flex-start}
-  .flip-card{height:500px}
+  .flip-card{height:580px}
   footer{flex-direction:column;text-align:center}
   h2{font-size:38px}
 }
@@ -408,9 +480,4 @@ footer span,footer small{color:#e2e8df;font-size:12px;letter-spacing:2px}
   main, .hero, .quiz-wrapper {
     padding-top: 90px !important;
   }
-}/* ==========================================
-   調整白鶴芋卡片上方的視覺區塊背景，增加層次感
-   ========================================== */
-.peace {
-  background: #ddded4 !important; /* 將原本太淺的顏色調整為帶有質感的淺綠灰色，與大背景區隔 */
 }
